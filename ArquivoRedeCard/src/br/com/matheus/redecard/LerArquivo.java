@@ -113,7 +113,7 @@ public class LerArquivo {
 				System.out.println("Ajustes NET e Desagendamentos");
 
 				String numPVajustado = linha.substring(3, 12);
-				String numRVajustado;
+				String numRVajustado = linha.substring(12, 21);
 				String dataAjuste;
 				String valorAjude;
 				String caracDebito;
@@ -145,6 +145,11 @@ public class LerArquivo {
 				//************** instanciando obj ajuste e desagendamentos
 				AjusteNETdesagendamentos a = new AjusteNETdesagendamentos();
 				a.setTipoRegistro(tipo);
+				a.setNumPVajustado(numPVajustado);
+				a.setNumRVajustado(numRVajustado);
+				
+				
+				System.out.println(a.toString());
 			}
 		}
 		fr.close();
