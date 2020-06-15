@@ -112,7 +112,7 @@ public class LerArquivo {
 			if(tipo.equals("035")) {
 				System.out.println("Ajustes NET e Desagendamentos");
 
-				String numPVajustado;
+				String numPVajustado = linha.substring(3, 12);
 				String numRVajustado;
 				String dataAjuste;
 				String valorAjude;
