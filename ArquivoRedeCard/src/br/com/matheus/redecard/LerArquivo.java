@@ -13,8 +13,9 @@ import br.com.matheus.redecard.classes.Creditos;
 public class LerArquivo {
 	
 	public void leitura() throws IOException{
-		File arquivo = new File("C:\\Users\\mathe\\Documents\\Project\\USJ\\ArquivoRedeCard\\NEFI_TESTE_1908.TXT");
+		File arquivo = new File("resources/NEFI_TESTE_1908.txt");
 		FileReader fr = new FileReader(arquivo);
+		
 		BufferedReader bf = new BufferedReader(fr);
 		
 		while(bf.ready()) {
@@ -114,7 +115,7 @@ public class LerArquivo {
 
 				String numPVajustado = linha.substring(3, 12);
 				String numRVajustado = linha.substring(12, 21);
-				String dataAjuste;
+				String dataAjuste = this.retornaData(linha.substring(21, 29));
 				String valorAjude;
 				String caracDebito;
 				String codMotivoAjude;
@@ -147,10 +148,15 @@ public class LerArquivo {
 				a.setTipoRegistro(tipo);
 				a.setNumPVajustado(numPVajustado);
 				a.setNumRVajustado(numRVajustado);
+				a.setDataAjuste(dataAjuste);
 				
 				
 				System.out.println(a.toString());
 			}
+			
+			
+			
+			
 		}
 		fr.close();
 		bf.close();
