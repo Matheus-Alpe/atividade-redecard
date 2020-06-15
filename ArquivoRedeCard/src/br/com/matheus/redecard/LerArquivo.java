@@ -9,9 +9,9 @@ import br.com.matheus.redecard.classes.HeaderArquivo;
 import br.com.matheus.redecard.classes.HeaderMatriz;
 import br.com.matheus.redecard.classes.AjusteNETdesagendamentos;
 import br.com.matheus.redecard.classes.Creditos;
-
 public class LerArquivo {
-	
+	//Estou aqui - Rafael
+
 	public void leitura() throws IOException{
 		File arquivo = new File("resources/NEFI_TESTE_1908.txt");
 		FileReader fr = new FileReader(arquivo);
