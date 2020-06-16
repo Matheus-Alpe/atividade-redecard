@@ -8,6 +8,7 @@ import java.io.IOException;
 import br.com.matheus.redecard.classes.HeaderArquivo;
 import br.com.matheus.redecard.classes.HeaderMatriz;
 import br.com.matheus.redecard.classes.AjusteNETdesagendamentos;
+import br.com.matheus.redecard.classes.AntecipacoesRAV;
 import br.com.matheus.redecard.classes.Creditos;
 public class LerArquivo {
 	//Estou aqui - Rafael
@@ -190,7 +191,50 @@ public class LerArquivo {
 				System.out.println(a.toString());
 			}
 			
-			
+			if(tipo.equals("036")) {
+				
+				String numPV = linha.substring(3, 12);
+				String numDocumento = linha.substring(12, 23);
+				String dataLancamento = this.retornaData(linha.substring(23, 31));
+				String valorLancamento = linha.substring(31, 46);
+				String caracCredito = linha.substring(46, 47);
+				String banco = linha.substring(47, 50);
+				String agencia = linha.substring(50, 56);
+				String contaCorrente = linha.substring(56, 67);
+				String numRVcorrespondente = linha.substring(67, 76);
+				String dataRVcorrespondente = this.retornaData(linha.substring(76, 84));
+				String valorCreditoOriginal = linha.substring(84, 99);
+				String dataVencimentoOriginal = this.retornaData(linha.substring(99, 107));
+				String numParcelasTotal  = linha.substring(107, 112);
+				String valorBruto = linha.substring(112, 127);
+				String valorTaxaDesconto = linha.substring(127, 142);
+				String numPVoriginal = linha.substring(142, 151);
+				String bandeira= linha.substring(151, 152);
+				
+				//************** instanciando obj antecipacoes RAV
+				AntecipacoesRAV ant = new AntecipacoesRAV();
+				ant.setTipoRegistro(tipo);
+				ant.setNumPV(numPV);
+				ant.setNumDocumento(numDocumento);
+				ant.setDataLancamento(dataLancamento);
+				ant.setValorLancamento(valorLancamento);
+				ant.setCaracCredito(caracCredito);
+				ant.setBanco(banco);
+				ant.setAgencia(agencia);
+				ant.setContaCorrente(contaCorrente);
+				ant.setNumRVcorrespondente(numRVcorrespondente);
+				ant.setDataRVcorrespondente(dataRVcorrespondente);
+				ant.setValorCreditoOriginal(valorCreditoOriginal);
+				ant.setDataVencimentoOriginal(dataVencimentoOriginal);
+				ant.setNumParcelasTotal(numParcelasTotal);
+				ant.setValorBruto(valorBruto);
+				ant.setValorTaxaDesconto(valorTaxaDesconto);
+				ant.setNumPVoriginal(numPVoriginal);
+				ant.setBandeira(bandeira);
+				
+				
+				System.out.println(ant.toString());
+			}
 			
 			
 		}
