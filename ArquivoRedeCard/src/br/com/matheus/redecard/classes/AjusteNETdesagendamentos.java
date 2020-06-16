@@ -5,10 +5,10 @@ public class AjusteNETdesagendamentos {
 	private String numPVajustado;
 	private String numRVajustado;
 	private String dataAjuste;
-	private String valorAjude;
+	private String valorAjuste;
 	private String caracDebito;
-	private String codMotivoAjude;
-	private String motivoAjude;
+	private String codMotivoAjuste;
+	private String motivoAjuste;
 	private String numCartao;
 	private String dataTransacaoCV;
 	private String numRVoriginal;
@@ -57,11 +57,11 @@ public class AjusteNETdesagendamentos {
 	public void setDataAjuste(String dataAjuste) {
 		this.dataAjuste = dataAjuste;
 	}
-	public String getValorAjude() {
-		return valorAjude;
+	public String getValorAjuste() {
+		return valorAjuste;
 	}
-	public void setValorAjude(String valorAjude) {
-		this.valorAjude = valorAjude;
+	public void setValorAjuste(String valorAjude) {
+		this.valorAjuste = valorAjude;
 	}
 	public String getCaracDebito() {
 		return caracDebito;
@@ -69,17 +69,17 @@ public class AjusteNETdesagendamentos {
 	public void setCaracDebito(String caracDebito) {
 		this.caracDebito = caracDebito;
 	}
-	public String getCodMotivoAjude() {
-		return codMotivoAjude;
+	public String getCodMotivoAjuste() {
+		return codMotivoAjuste;
 	}
-	public void setCodMotivoAjude(String codMotivoAjude) {
-		this.codMotivoAjude = codMotivoAjude;
+	public void setCodMotivoAjuste(String codMotivoAjude) {
+		this.codMotivoAjuste = codMotivoAjude;
 	}
-	public String getMotivoAjude() {
-		return motivoAjude;
+	public String getMotivoAjuste() {
+		return motivoAjuste;
 	}
-	public void setMotivoAjude(String motivoAjude) {
-		this.motivoAjude = motivoAjude;
+	public void setMotivoAjuste(String motivoAjude) {
+		this.motivoAjuste = motivoAjude;
 	}
 	public String getNumCartao() {
 		return numCartao;
@@ -222,8 +222,8 @@ public class AjusteNETdesagendamentos {
 	@Override
 	public String toString() {
 		return "AjusteNETdesagendamentos [tipoRegistro=" + tipoRegistro + ", numPVajustado=" + numPVajustado
-				+ ", numRVajustado=" + numRVajustado + ", dataAjuste=" + dataAjuste + ", valorAjude=" + valorAjude
-				+ ", caracDebito=" + caracDebito + ", codMotivoAjude=" + codMotivoAjude + ", motivoAjude=" + motivoAjude
+				+ ", numRVajustado=" + numRVajustado + ", dataAjuste=" + dataAjuste + ", valorAjuste=" + valorAjuste
+				+ ", caracDebito=" + caracDebito + ", codMotivoAjuste=" + codMotivoAjuste + ", motivoAjuste=" + motivoAjuste
 				+ ", numCartao=" + numCartao + ", dataTransacaoCV=" + dataTransacaoCV + ", numRVoriginal="
 				+ numRVoriginal + ", numReferenciaCartaFax=" + numReferenciaCartaFax + ", dataCarta=" + dataCarta
 				+ ", mesReferencia=" + mesReferencia + ", numPVoriginal=" + numPVoriginal + ", dataRVoriginal="

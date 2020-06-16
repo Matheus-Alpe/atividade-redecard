@@ -116,39 +116,74 @@ public class LerArquivo {
 				String numPVajustado = linha.substring(3, 12);
 				String numRVajustado = linha.substring(12, 21);
 				String dataAjuste = this.retornaData(linha.substring(21, 29));
-				String valorAjude;
-				String caracDebito;
-				String codMotivoAjude;
-				String MotivoAjude;
-				String numCartao;
-				String dataTransacaoCV;
-				String numRVoriginal;
-				String numReferenciaCartaFax;
-				String dataCarta;
-				String mesReferencia;
-				String numPVoriginal;
-				String dataRVoriginal;
-				String valorTransacao;
-				String caracDouNet;
-				String dataCredito;
-				String novoValorParcela;
-				String valorOriginalParcela;
-				String valorBrutoResumoVendaOriginal;
-				String valorCancelamentoSolicitado;
-				String numNSU;
-				String numAutorizacao;
-				String tipoDebito;
-				String numOrdemDebito;
-				String valorDebitoTotal;
-				String valorPendente;
-				String bandeiraRVorigem;
-				String bandeiraRVajustado;
-				//************** instanciando obj ajuste e desagendamentos
+				String valorAjuste = linha.substring(29, 44);
+				String caracDebito = linha.substring(44, 45);
+				String codMotivoAjuste = linha.substring(45, 47);
+				String motivoAjuste = linha.substring(47, 75);
+				String numCartao = linha.substring(75, 91);
+				String dataTransacaoCV = this.retornaData(linha.substring(91, 99));
+				String numRVoriginal = linha.substring(99, 108);
+				String numReferenciaCartaFax = linha.substring(108, 123);
+				String dataCarta = this.retornaData(linha.substring(123, 131));
+				String mesReferencia = linha.substring(131, 137);
+				String numPVoriginal = linha.substring(137, 146);
+				String dataRVoriginal = this.retornaData(linha.substring(146, 154));
+				String valorTransacao = linha.substring(154, 169);
+				String caracDouNet = linha.substring(169, 170);
+				String dataCredito = this.retornaData(linha.substring(170, 178));
+				String novoValorParcela = linha.substring(178, 193);
+				String valorOriginalParcela = linha.substring(193, 208);
+				String valorBrutoResumoVendaOriginal = linha.substring(208, 223);
+				String valorCancelamentoSolicitado = linha.substring(223, 238);
+				String numNSU = linha.substring(238, 250);
+				String numAutorizacao = linha.substring(250, 256);
+				
+				
+				//************** instanciando obj ajuste e desagendamentos		
 				AjusteNETdesagendamentos a = new AjusteNETdesagendamentos();
+				
+				if(!caracDouNet.equalsIgnoreCase("D")) {
+					String tipoDebito = linha.substring(256, 257);
+					String numOrdemDebito = linha.substring(257, 268);
+					String valorDebitoTotal = linha.substring(268, 283);
+					String valorPendente = linha.substring(283, 298);
+					String bandeiraRVorigem = linha.substring(298, 299);
+					String bandeiraRVajustado = linha.substring(299);
+					
+					
+					a.setTipoDebito(tipoDebito);
+					a.setNumOrdemDebito(numOrdemDebito);
+					a.setValorDebitoTotal(valorDebitoTotal);
+					a.setValorPendente(valorPendente);
+					a.setBandeiraRVorigem(bandeiraRVorigem);
+					a.setBandeiraRVajustado(bandeiraRVajustado);
+				}
+				
 				a.setTipoRegistro(tipo);
 				a.setNumPVajustado(numPVajustado);
 				a.setNumRVajustado(numRVajustado);
 				a.setDataAjuste(dataAjuste);
+				a.setValorAjuste(valorAjuste);
+				a.setCaracDebito(caracDebito);
+				a.setCodMotivoAjuste(codMotivoAjuste);
+				a.setMotivoAjuste(motivoAjuste);
+				a.setNumCartao(numCartao);
+				a.setDataTransacaoCV(dataTransacaoCV);
+				a.setNumRVoriginal(numRVoriginal);
+				a.setNumReferenciaCartaFax(numReferenciaCartaFax);
+				a.setDataCarta(dataCarta);
+				a.setMesReferencia(mesReferencia);
+				a.setNumPVoriginal(numPVoriginal);
+				a.setDataRVoriginal(dataRVoriginal);
+				a.setValorTransacao(valorTransacao);
+				a.setCaracDouNet(caracDouNet);
+				a.setDataCredito(dataCredito);
+				a.setNovoValorParcela(novoValorParcela);
+				a.setValorOriginalParcela(valorOriginalParcela);
+				a.setValorBrutoResumoVendaOriginal(valorBrutoResumoVendaOriginal);
+				a.setValorCancelamentoSolicitado(valorCancelamentoSolicitado);
+				a.setNumNSU(numNSU);
+				a.setNumAutorizacao(numAutorizacao);
 				
 				
 				System.out.println(a.toString());
