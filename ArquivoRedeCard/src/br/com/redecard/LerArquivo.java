@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import br.com.redecard.classes.AjusteNETdesagendamentos;
+import br.com.redecard.classes.AjustesDebitoViaBanco;
 import br.com.redecard.classes.AntecipacoesRAV;
 import br.com.redecard.classes.Creditos;
 import br.com.redecard.classes.HeaderArquivo;
@@ -239,14 +240,8 @@ public class LerArquivo {
 			
 			
 			if(tipo.equals("037")) {
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
+				System.out.println("Totalizador de Créditos");
+				
 				String numPV = linha.substring(3, 12);
 				String brancos = linha.substring(12, 19);
 				String dataCredito = this.retornaData(linha.substring(19, 27));
@@ -277,6 +272,78 @@ public class LerArquivo {
 				
 				System.out.println(t.toString());
 				
+			}
+			
+			if(tipo.equals("038")) {
+				System.out.println("Ajudes a Débito (via Banco)");
+				
+				String numPV = linha.substring(3, 12);
+				String numDocumento = linha.substring(12, 23);
+				String dataEmissao = this.retornaData(linha.substring(23, 31));
+				String valorDebito = linha.substring(31, 46);
+				String caracDebito = linha.substring(46, 47);
+				String banco = linha.substring(47, 50);
+				String agencia = linha.substring(50, 56);
+				String contaCorrente = linha.substring(56, 67);
+				String numRVoriginal = linha.substring(67, 76);
+				String dataRVoriginal = this.retornaData(linha.substring(76, 84));
+				String valorCreditoOriginal = linha.substring(84, 99);
+				String codMotivoDebito = linha.substring(99, 101);
+				String motivoDebito = linha.substring(101, 129);
+				String numCartao = linha.substring(129, 145);
+				String numRefCartaOuFax = linha.substring(145, 160);
+				String mesReferencia = linha.substring(160, 166);
+				String dataCarta = this.retornaData(linha.substring(166, 174));
+				String valorCancelamentoSolicitado = linha.substring(174, 189);
+				String numProcesso = linha.substring(189, 204);
+				String numPVoriginal = linha.substring(204, 213);
+				String dataTransacaoCV = this.retornaData(linha.substring(213, 221));
+				String numNSU = linha.substring(221, 233);
+				String numResumoDebito = linha.substring(233, 242);
+				String dataDebito = this.retornaData(linha.substring(242, 250));
+				String valorTransacaoOriginal = linha.substring(250, 265);
+				String numAutorizacao = linha.substring(265, 271);
+				String tipoDebito = linha.substring(271, 272);
+				String valorDebitoTotal = linha.substring(272, 287);
+				String valorPendente = linha.substring(287, 302);
+				String bandeiraRVorigem = linha.substring(302);
+				
+				//************** instanciando obj ajuster a debia (via banco)
+				AjustesDebitoViaBanco ad = new AjustesDebitoViaBanco();
+				
+				ad.setTipoRegistro(tipo);
+				ad.setNumPV(numPV);
+				ad.setNumDocumento(numDocumento);
+				ad.setDataEmissao(dataEmissao);
+				ad.setValorDebito(valorDebito);
+				ad.setCaracDebito(caracDebito);
+				ad.setBanco(banco);
+				ad.setAgencia(agencia);
+				ad.setContaCorrente(contaCorrente);
+				ad.setNumRVoriginal(numRVoriginal);
+				ad.setDataRVoriginal(dataRVoriginal);
+				ad.setValorCreditoOriginal(valorCreditoOriginal);
+				ad.setCodMotivoDebito(codMotivoDebito);
+				ad.setMotivoDebito(motivoDebito);
+				ad.setNumCartao(numCartao);
+				ad.setNumRefCartaOuFax(numRefCartaOuFax);
+				ad.setMesReferencia(mesReferencia);
+				ad.setDataCarta(dataCarta);
+				ad.setValorCancelamentoSolicitado(valorCancelamentoSolicitado);
+				ad.setNumProcesso(numProcesso);
+				ad.setNumPVoriginal(numPVoriginal);
+				ad.setDataTransacaoCV(dataTransacaoCV);
+				ad.setNumNSU(numNSU);
+				ad.setNumResumoDebito(numResumoDebito);
+				ad.setDataDebito(dataDebito);
+				ad.setValorTransacaoOriginal(valorTransacaoOriginal);
+				ad.setNumAutorizacao(numAutorizacao);
+				ad.setTipoDebito(tipoDebito);
+				ad.setValorDebitoTotal(valorDebitoTotal);
+				ad.setValorPendente(valorPendente);
+				ad.setBandeiraRVorigem(bandeiraRVorigem);
+				
+				System.out.println(ad.toString());
 			}
 			
 		}
