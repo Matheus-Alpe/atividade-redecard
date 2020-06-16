@@ -1,4 +1,4 @@
-package br.com.matheus.redecard.classes;
+package br.com.redecard.classes;
 
 public class AntecipacoesRAV {
 	private String tipoRegistro;

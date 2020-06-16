@@ -1,4 +1,4 @@
-package br.com.matheus.redecard;
+package br.com.redecard;
 
 import java.io.IOException;
 

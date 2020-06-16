@@ -1,15 +1,15 @@
-package br.com.matheus.redecard;
+package br.com.redecard;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import br.com.matheus.redecard.classes.HeaderArquivo;
-import br.com.matheus.redecard.classes.HeaderMatriz;
-import br.com.matheus.redecard.classes.AjusteNETdesagendamentos;
-import br.com.matheus.redecard.classes.AntecipacoesRAV;
-import br.com.matheus.redecard.classes.Creditos;
+import br.com.redecard.classes.AjusteNETdesagendamentos;
+import br.com.redecard.classes.AntecipacoesRAV;
+import br.com.redecard.classes.Creditos;
+import br.com.redecard.classes.HeaderArquivo;
+import br.com.redecard.classes.HeaderMatriz;
 public class LerArquivo {
 	//Estou aqui - Rafael
 	//Eu tbm estou aqui - Matheus
