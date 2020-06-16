@@ -10,6 +10,7 @@ import br.com.redecard.classes.AntecipacoesRAV;
 import br.com.redecard.classes.Creditos;
 import br.com.redecard.classes.HeaderArquivo;
 import br.com.redecard.classes.HeaderMatriz;
+import br.com.redecard.classes.TotalizadorCreditos;
 public class LerArquivo {
 	//Estou aqui - Rafael
 	//Eu tbm estou aqui - Matheus
@@ -236,6 +237,47 @@ public class LerArquivo {
 				System.out.println(ant.toString());
 			}
 			
+			
+			if(tipo.equals("037")) {
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");
+				String numPV = linha.substring(3, 12);
+				String brancos = linha.substring(12, 19);
+				String dataCredito = this.retornaData(linha.substring(19, 27));
+				String valorTotalCreditos = linha.substring(27, 42);
+				String brancos2 = linha.substring(42, 43);
+				String numBanco = linha.substring(43, 46);
+				String numAgencia = linha.substring(46, 52);
+				String numContaCorrente = linha.substring(52, 63);
+				String dataGeracaoArquivo = this.retornaData(linha.substring(63, 71));
+				String dataCreditoAntecipado = this.retornaData(linha.substring(71, 79));
+				String valorTotalCreditosAntecipados = linha.substring(79, 94);
+				
+				//************** instanciando obj Totalizador de Créditos
+				TotalizadorCreditos t = new TotalizadorCreditos();
+				
+				t.setTipoRegistro(tipo);
+				t.setNumPV(numPV);
+				t.setBrancos(brancos);
+				t.setDataCredito(dataCredito);
+				t.setValorTotalCreditos(valorTotalCreditos);
+				t.setBrancos2(brancos2);
+				t.setNumBanco(numBanco);
+				t.setNumAgencia(numAgencia);
+				t.setNumContaCorrente(numContaCorrente);
+				t.setDataGeracaoArquivo(dataGeracaoArquivo);
+				t.setDataCreditoAntecipado(dataCreditoAntecipado);
+				t.setValorTotalCreditosAntecipados(valorTotalCreditosAntecipados);
+				
+				System.out.println(t.toString());
+				
+			}
 			
 		}
 		fr.close();
