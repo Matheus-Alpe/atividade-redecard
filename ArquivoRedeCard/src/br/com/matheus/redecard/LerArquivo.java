@@ -11,6 +11,7 @@ import br.com.matheus.redecard.classes.AjusteNETdesagendamentos;
 import br.com.matheus.redecard.classes.Creditos;
 public class LerArquivo {
 	//Estou aqui - Rafael
+	//Eu tbm estou aqui - Matheus
 
 	public void leitura() throws IOException{
 		File arquivo = new File("resources/NEFI_TESTE_1908.txt");
