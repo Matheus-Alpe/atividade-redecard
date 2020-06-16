@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import br.com.redecard.classes.AVS;
 import br.com.redecard.classes.AjusteNETdesagendamentos;
 import br.com.redecard.classes.AjustesDebitoViaBanco;
 import br.com.redecard.classes.AntecipacoesRAV;
@@ -370,6 +371,30 @@ public class LerArquivo {
 				se.setValorPorConsulta(valorPorConsulta);
 				
 				System.out.println(se.toString());
+			}
+			
+			if(tipo.equals("041")) {
+				System.out.println("AVS");
+				
+				String numPV = linha.substring(3, 12);
+				String qtdConsultasRealizadas = linha.substring(12, 17);
+				String valorTotalConsultasPeriodo = linha.substring(17, 32);
+				String dataInicioPeriodoConsulta = this.retornaData(linha.substring(32, 40));
+				String dataFimPeriodoConsulta = this.retornaData(linha.substring(40, 48));
+				String valorPorConsulta = linha.substring(48, 63);
+				
+				//************** instanciando obj AVS
+				AVS avs = new AVS();
+				
+				avs.setTipoRegistro(tipo);
+				avs.setNumPV(numPV);
+				avs.setQtdConsultasRealizadas(qtdConsultasRealizadas);
+				avs.setValorTotalConsultasPeriodo(valorTotalConsultasPeriodo);
+				avs.setDataInicioPeriodoConsulta(dataInicioPeriodoConsulta);
+				avs.setDataFimPeriodoConsulta(dataFimPeriodoConsulta);
+				avs.setValorPorConsulta(valorPorConsulta);
+				
+				System.out.println(avs.toString());
 			}
 			
 		}
