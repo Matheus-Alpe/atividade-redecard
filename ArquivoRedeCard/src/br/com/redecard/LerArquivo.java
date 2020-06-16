@@ -12,6 +12,7 @@ import br.com.redecard.classes.AntecipacoesRAV;
 import br.com.redecard.classes.Creditos;
 import br.com.redecard.classes.HeaderArquivo;
 import br.com.redecard.classes.HeaderMatriz;
+import br.com.redecard.classes.Securecode;
 import br.com.redecard.classes.Serasa;
 import br.com.redecard.classes.TotalizadorCreditos;
 public class LerArquivo {
@@ -395,6 +396,30 @@ public class LerArquivo {
 				avs.setValorPorConsulta(valorPorConsulta);
 				
 				System.out.println(avs.toString());
+			}
+			
+			if(tipo.equals("042")) {
+				System.out.println("Securecode");
+				
+				String numPV = linha.substring(3, 12);
+				String qtdConsultasRealizadas = linha.substring(12, 17);
+				String valorTotalConsultasPeriodo = linha.substring(17, 32);
+				String dataInicioPeriodoConsulta = this.retornaData(linha.substring(32, 40));
+				String dataFimPeriodoConsulta = this.retornaData(linha.substring(40, 49));
+				String valorPorConsulta = linha.substring(49);
+				
+				//************** instanciando obj Securecode
+				Securecode sc = new Securecode();
+				
+				sc.setTipoRegistro(tipo);
+				sc.setNumPV(numPV);
+				sc.setQtdConsultasRealizadas(qtdConsultasRealizadas);
+				sc.setValorTotalConsultasPeriodo(valorTotalConsultasPeriodo);
+				sc.setDataInicioPeriodoConsulta(dataInicioPeriodoConsulta);
+				sc.setDataFimPeriodoConsulta(dataFimPeriodoConsulta);
+				sc.setValorPorConsulta(valorPorConsulta);
+				
+				System.out.println(sc.toString());
 			}
 			
 		}
