@@ -11,6 +11,7 @@ import br.com.redecard.classes.AntecipacoesRAV;
 import br.com.redecard.classes.Creditos;
 import br.com.redecard.classes.HeaderArquivo;
 import br.com.redecard.classes.HeaderMatriz;
+import br.com.redecard.classes.Serasa;
 import br.com.redecard.classes.TotalizadorCreditos;
 public class LerArquivo {
 	//Estou aqui - Rafael
@@ -308,7 +309,7 @@ public class LerArquivo {
 				String valorPendente = linha.substring(287, 302);
 				String bandeiraRVorigem = linha.substring(302);
 				
-				//************** instanciando obj ajuster a debia (via banco)
+				//************** instanciando obj ajustar o debito (via banco)
 				AjustesDebitoViaBanco ad = new AjustesDebitoViaBanco();
 				
 				ad.setTipoRegistro(tipo);
@@ -344,6 +345,31 @@ public class LerArquivo {
 				ad.setBandeiraRVorigem(bandeiraRVorigem);
 				
 				System.out.println(ad.toString());
+			}
+			
+			
+			if(tipo.equals("040")) {
+				System.out.println("Serasa");
+				
+				String numPV = linha.substring(3, 12);
+				String qtdConsultasRealizadas = linha.substring(12, 17);
+				String valorTotalConsultasPeriodo = linha.substring(17, 32);
+				String dataInicioPeriodoConsulta = this.retornaData(linha.substring(32, 40));
+				String dataFimPeriodoConsulta = this.retornaData(linha.substring(40, 48));
+				String valorPorConsulta = linha.substring(48, 63);
+				
+				//************** instanciando obj Serasa
+				Serasa se = new Serasa();
+				
+				se.setTipoRegistro(tipo);
+				se.setNumPV(numPV);
+				se.setQtdConsultasRealizadas(qtdConsultasRealizadas);
+				se.setValorTotalConsultasPeriodo(valorTotalConsultasPeriodo);
+				se.setDataInicioPeriodoConsulta(dataInicioPeriodoConsulta);
+				se.setDataFimPeriodoConsulta(dataFimPeriodoConsulta);
+				se.setValorPorConsulta(valorPorConsulta);
+				
+				System.out.println(se.toString());
 			}
 			
 		}
