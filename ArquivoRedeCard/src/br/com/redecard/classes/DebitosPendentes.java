@@ -198,5 +198,4 @@ public class DebitosPendentes {
 				+ ", descricaoMeioCompensado=" + descricaoMeioCompensado + "]";
 	}
 	
-	
 }
