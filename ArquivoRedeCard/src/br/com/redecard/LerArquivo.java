@@ -473,14 +473,14 @@ public class LerArquivo {
 				String motivoAjuste = linha.substring(48, 76);
 				String numeroCartao = linha.substring(76, 92);
 				String nunNSU = linha.substring(92, 104);
-				String dataCV = linha.substring(142, 150);
+				String dataCV = retornaData(linha.substring(142, 150));
 				String numAutorizacao = linha.substring(112, 118);
 				String valorTransacao = linha.substring(118, 133);
 				String numeroRVOriginal = linha.substring(133, 142);
 				String dataRVOriginal = retornaData(linha.substring(142, 150));
 				String numPvOriginal = linha.substring(150, 159);
 				String numRefCarta = linha.substring(159, 174);
-				String dataCarta = retornaData(linha.substring(174, 182));
+				String dataCarta = linha.substring(174, 182);
 				String numeroProcesso = linha.substring(182, 197);
 				String mesReferencia = linha.substring(197, 203);
 				String valorCompensado = linha.substring(203, 218);
@@ -508,6 +508,7 @@ public class LerArquivo {
 				debitosPendentes.setNumeroRVOriginal(numeroRVOriginal);
 				debitosPendentes.setDataRVOriginal(dataRVOriginal);
 				debitosPendentes.setNumeroPVOriginal(numPvOriginal);
+				debitosPendentes.setNumeroCarta(numRefCarta);
 				debitosPendentes.setDataRVOriginal(dataCarta);
 				debitosPendentes.setNumeroProcesso(numeroProcesso);
 				debitosPendentes.setMesReferencia(mesReferencia);
@@ -554,6 +555,7 @@ public class LerArquivo {
 				//************** instanciando obj Debitos Liquidados *******************
 				
 				DebitosLiquidados debitosLiquidados = new DebitosLiquidados();
+				debitosLiquidados.setNumeroPV(numeroPV);
 				debitosLiquidados.setTipoRegistro(tipo);
 				debitosLiquidados.setNumPVOriginal(numPVOriginal);
 				debitosLiquidados.setNumeroOrdemDebito(numeroOrdemDebito);
