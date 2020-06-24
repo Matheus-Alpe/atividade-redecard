@@ -26,6 +26,8 @@ public class DebitosLiquidados {
 	private String processoRet;
 	private String identficadorCompensado;
 	private String descricaoCompensado;
+	
+	
 	public String getTipoRegistro() {
 		return tipoRegistro;
 	}

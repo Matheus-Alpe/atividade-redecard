@@ -6,7 +6,6 @@ public class DesagendamentoParcelas {
 	private String originalPV;
 	private String originalRV;
 	private String numDocumento;
-	private String dataEmissao;
 	private String dataCredito;
 	private String novoValorParcela;
 	private String valorOriginalParcela;
@@ -43,12 +42,6 @@ public class DesagendamentoParcelas {
 	}
 	public void setNumDocumento(String numDocumento) {
 		this.numDocumento = numDocumento;
-	}
-	public String getDataEmissao() {
-		return dataEmissao;
-	}
-	public void setDataEmissao(String dataEmissao) {
-		this.dataEmissao = dataEmissao;
 	}
 	public String getDataCredito() {
 		return dataCredito;
@@ -131,14 +124,14 @@ public class DesagendamentoParcelas {
 	@Override
 	public String toString() {
 		return "DesagendamentoParcelas [tipoRegistro=" + tipoRegistro + ", originalPV=" + originalPV + ", originalRV="
-				+ originalRV + ", numDocumento=" + numDocumento + ", dataEmissao=" + dataEmissao + ", dataCredito="
-				+ dataCredito + ", novoValorParcela=" + novoValorParcela + ", valorOriginalParcela="
-				+ valorOriginalParcela + ", valorAjuste=" + valorAjuste + ", dataCancelamento=" + dataCancelamento
-				+ ", valorRVOriginal=" + valorRVOriginal + ", valorCancelamentoSolicitado="
-				+ valorCancelamentoSolicitado + ", numeroCartao=" + numeroCartao + ", dataTransacao=" + dataTransacao
-				+ ", Nsu=" + Nsu + ", tipoDebito=" + tipoDebito + ", numeroParcela=" + numeroParcela
-				+ ", bandeiraRVOrigem=" + bandeiraRVOrigem + "]";
+				+ originalRV + ", numDocumento=" + numDocumento + ", dataCredito=" + dataCredito + ", novoValorParcela="
+				+ novoValorParcela + ", valorOriginalParcela=" + valorOriginalParcela + ", valorAjuste=" + valorAjuste
+				+ ", dataCancelamento=" + dataCancelamento + ", valorRVOriginal=" + valorRVOriginal
+				+ ", valorCancelamentoSolicitado=" + valorCancelamentoSolicitado + ", numeroCartao=" + numeroCartao
+				+ ", dataTransacao=" + dataTransacao + ", Nsu=" + Nsu + ", tipoDebito=" + tipoDebito
+				+ ", numeroParcela=" + numeroParcela + ", bandeiraRVOrigem=" + bandeiraRVOrigem + "]";
 	}
+
 	
 	
 	

@@ -6,15 +6,20 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import br.com.redecard.classes.AVS;
+import br.com.redecard.classes.AjusteCredito;
 import br.com.redecard.classes.AjusteNETdesagendamentos;
 import br.com.redecard.classes.AjustesDebitoViaBanco;
 import br.com.redecard.classes.AntecipacoesRAV;
 import br.com.redecard.classes.Creditos;
+import br.com.redecard.classes.DebitosLiquidados;
+import br.com.redecard.classes.DebitosPendentes;
+import br.com.redecard.classes.DesagendamentoParcelas;
 import br.com.redecard.classes.HeaderArquivo;
 import br.com.redecard.classes.HeaderMatriz;
 import br.com.redecard.classes.Securecode;
 import br.com.redecard.classes.Serasa;
 import br.com.redecard.classes.TotalizadorCreditos;
+import br.com.redecard.classes.TotalizadorMatriz;
 public class LerArquivo {
 	//Estou aqui - Rafael
 	//Eu tbm estou aqui - Matheus
@@ -421,6 +426,242 @@ public class LerArquivo {
 				
 				System.out.println(sc.toString());
 			}
+			if(tipo.equals("043")) {
+				System.out.println("Ajuste de Crédito");
+				
+				String numPV = linha.substring(3, 12);
+				String resumoCredito = linha.substring(12, 21);
+				String numDocumento = linha.substring(21, 32);
+				String dataEmissao = retornaData(linha.substring(32, 40));
+				String dataCredito = retornaData(linha.substring(40, 48));
+				String valorCredito = linha.substring(48, 63);
+				String credito = linha.substring(63, 64);
+				String banco = linha.substring(64, 67);
+				String agencia = linha.substring(67, 73);
+				String contaCorrente = linha.substring(73, 84);
+				String numMotivoCredito = linha.substring(73, 84);
+				String desMotivoCredito = linha.substring(86, 114);
+				String bandAjusteCrédito = linha.substring(114, 115);
+				
+				//************** instanciando obj AjusteCredito *******************
+				AjusteCredito ajusteCredito = new AjusteCredito();
+				ajusteCredito.setTipoRegistro(tipo);
+				ajusteCredito.setPvCreditado(numPV);
+				ajusteCredito.setResumoCredido(resumoCredito);
+				ajusteCredito.setDocumento(numDocumento);
+				ajusteCredito.setDtEmissao(dataEmissao);
+				ajusteCredito.setDtCredito(dataCredito);
+				ajusteCredito.setValorCredito(valorCredito);
+				ajusteCredito.setCredito(credito);
+				ajusteCredito.setBanco(banco);
+				ajusteCredito.setAgencia(agencia);
+				ajusteCredito.setContaCorrente(contaCorrente);
+				ajusteCredito.setCodigoMotivoCredito(numMotivoCredito);
+				ajusteCredito.setMtCredito(desMotivoCredito);
+				ajusteCredito.setBandeira(bandAjusteCrédito);
+
+				System.out.println(ajusteCredito.toString());
+			}
+			if(tipo.equals("044")) {
+				System.out.println("Débitos Pendentes");
+				
+				String pvAjustado = linha.substring(0, 3);
+				String ordemDebito = linha.substring(3, 12);
+				String dataOrdemDebito = retornaData(linha.substring(23, 31));
+				String valorOrdemDebito = linha.substring(31, 46);
+				String codMotivoAjuste = linha.substring(46, 48);
+				String motivoAjuste = linha.substring(48, 76);
+				String numeroCartao = linha.substring(76, 92);
+				String nunNSU = linha.substring(92, 104);
+				String dataCV = linha.substring(142, 150);
+				String numAutorizacao = linha.substring(112, 118);
+				String valorTransacao = linha.substring(118, 133);
+				String numeroRVOriginal = linha.substring(133, 142);
+				String dataRVOriginal = retornaData(linha.substring(142, 150));
+				String numPvOriginal = linha.substring(150, 159);
+				String numRefCarta = linha.substring(159, 174);
+				String dataCarta = retornaData(linha.substring(174, 182));
+				String numeroProcesso = linha.substring(182, 197);
+				String mesReferencia = linha.substring(197, 203);
+				String valorCompensado = linha.substring(203, 218);
+				String dataPagamento = linha.substring(218, 226);
+				String valorPendente = linha.substring(226, 241);
+				String processoRetencao = linha.substring(241, 256);
+				String codMeioCompensacao = linha.substring(256, 258);
+				String meioCompensacao = linha.substring(258, 286);
+				
+				//************** instanciando obj Debitos Pendentes *******************
+				
+				DebitosPendentes debitosPendentes = new DebitosPendentes();
+				debitosPendentes.setTpRgistro(tipo);
+				debitosPendentes.setPvAjustado(pvAjustado);
+				debitosPendentes.setOrdemDebito(ordemDebito);
+				debitosPendentes.setDataOrdemDebito(dataOrdemDebito);
+				debitosPendentes.setValorAjuste(valorOrdemDebito);
+				debitosPendentes.setIdMotivoAjuste(codMotivoAjuste);
+				debitosPendentes.setMotivoAjuste(motivoAjuste);
+				debitosPendentes.setNumCartao(numeroCartao);
+				debitosPendentes.setNsu(nunNSU);
+				debitosPendentes.setDataCvNsu(dataCV);
+				debitosPendentes.setNumeroAutorizacao(numAutorizacao);
+				debitosPendentes.setValorTransacaoOriginal(valorTransacao);
+				debitosPendentes.setNumeroRVOriginal(numeroRVOriginal);
+				debitosPendentes.setDataRVOriginal(dataRVOriginal);
+				debitosPendentes.setNumeroPVOriginal(numPvOriginal);
+				debitosPendentes.setDataRVOriginal(dataCarta);
+				debitosPendentes.setNumeroProcesso(numeroProcesso);
+				debitosPendentes.setMesReferencia(mesReferencia);
+				debitosPendentes.setValorPago(valorCompensado);
+				debitosPendentes.setDataCompensacao(dataPagamento);
+				debitosPendentes.setValorPendente(valorPendente);
+				debitosPendentes.setProcessoRetencao(processoRetencao);
+				debitosPendentes.setMeioCompensado(codMeioCompensacao);
+				debitosPendentes.setDescricaoMeioCompensado(meioCompensacao);
+			
+
+				
+				System.out.println(debitosPendentes.toString());
+				
+				}
+			
+			if(tipo.equals("045")) {
+				System.out.println("Débitos Liquidados");
+				
+				 String numeroPV = linha.substring(3, 12);
+				 String numeroOrdemDebito = linha.substring(12, 23);
+				 String dataOrdemDebito = retornaData(linha.substring(23, 31));
+				 String valorTotalDebito = linha.substring(31, 46);
+				 String identificadorMotivoAjuste = linha.substring(46, 48);
+				 String descricaoMotivoAjuste = linha.substring(49, 76);
+				 String numeroCartao = linha.substring(76, 92);
+				 String numeroUSU = linha.substring(92, 104);
+				 String dataCVNSU = retornaData(linha.substring(104, 112));
+				 String numAutorizacao = linha.substring(112, 118);
+				 String valorTransacaoOriginal = linha.substring(118, 133);
+				 String numRVOriginal = linha.substring(133, 142);
+				 String dataRVOriginal = retornaData(linha.substring(142, 150));
+				 String numPVOriginal = linha.substring(150, 159);
+				 String nCartaReferencia = linha.substring(159, 174);
+				 String dataCancelamento = retornaData(linha.substring(174, 182));
+				 String numeroProcesso = linha.substring(182, 197);
+				 String mesReferencia = linha.substring(197, 203);
+				 String valorPago = linha.substring(203, 218);
+				 String dataLiquidacao = retornaData(linha.substring(218, 226));
+				 String processoRet = linha.substring(226, 241);
+				 String identficadorCompensado = linha.substring(241, 243);
+				 String descricaoCompensado = linha.substring(243, 271);
+				
+				//************** instanciando obj Debitos Liquidados *******************
+				
+				DebitosLiquidados debitosLiquidados = new DebitosLiquidados();
+				debitosLiquidados.setTipoRegistro(tipo);
+				debitosLiquidados.setNumPVOriginal(numPVOriginal);
+				debitosLiquidados.setNumeroOrdemDebito(numeroOrdemDebito);
+				debitosLiquidados.setDataOrdemDebito(dataOrdemDebito);
+				debitosLiquidados.setValorTotalDebito(valorTotalDebito);
+				debitosLiquidados.setIdentificadorMotivoAjuste(identificadorMotivoAjuste);
+				debitosLiquidados.setDescricaoMotivoAjuste(descricaoMotivoAjuste);
+				debitosLiquidados.setNumeroCartao(numeroCartao);
+				debitosLiquidados.setNumeroUSU(numeroUSU);
+				debitosLiquidados.setDataCVNSU(dataCVNSU);
+				debitosLiquidados.setNumAutorizacao(numAutorizacao);
+				debitosLiquidados.setValorTransacaoOriginal(valorTransacaoOriginal);
+				debitosLiquidados.setNumRVOriginal(numRVOriginal);
+				debitosLiquidados.setDataRVOriginal(dataRVOriginal);
+				debitosLiquidados.setNumPVOriginal(numPVOriginal);
+				debitosLiquidados.setnCartaReferencia(nCartaReferencia);
+				debitosLiquidados.setDataCancelamento(dataCancelamento);
+				debitosLiquidados.setNumeroProcesso(numeroProcesso);
+				debitosLiquidados.setMesReferencia(mesReferencia);
+				debitosLiquidados.setValorPago(valorPago);
+				debitosLiquidados.setDataLiquidacao(dataLiquidacao);
+				debitosLiquidados.setProcessoRet(processoRet);
+				debitosLiquidados.setIdentficadorCompensado(identficadorCompensado);
+				debitosLiquidados.setDescricaoCompensado(descricaoCompensado);
+
+				
+				System.out.println(debitosLiquidados.toString());
+				
+				}
+			
+			if(tipo.equals("049")) {
+				System.out.println("Desagendamento de Parcelas");
+				
+				 String originalPV = linha.substring(03, 12);
+				 String originalRV = linha.substring(12, 21);
+				 String numDocumento = linha.substring(21, 36);
+				 String dataCredito = retornaData(linha.substring(36, 44));
+				 String novoValorParcela = linha.substring(44, 59);
+				 String valorOriginalParcela = linha.substring(59, 74);
+				 String valorAjuste = linha.substring(74 , 89);
+				 String dataCancelamento = retornaData(linha.substring(89, 97));
+				 String valorRVOriginal = linha.substring(97, 112);
+				 String valorCancelamentoSolicitado = linha.substring( 112, 127);
+				 String numeroCartao = linha.substring(127, 143);
+				 String dataTransacao = retornaData(linha.substring( 143, 151));
+				 String nsu = linha.substring(151, 163);
+				 String tipoDebito = linha.substring(163, 164);
+				 String numeroParcela = linha.substring(164, 166);
+				 String bandeiraRVOrigem = linha.substring(166, 167);
+				
+				//************** instanciando obj Desagendamento de Parcelas *******************
+				
+				DesagendamentoParcelas desagendamentoParcelas = new DesagendamentoParcelas();
+				
+				desagendamentoParcelas.setTipoRegistro(tipo);
+				desagendamentoParcelas.setOriginalPV(originalPV);
+				desagendamentoParcelas.setOriginalRV(originalRV);
+				desagendamentoParcelas.setNumDocumento(numDocumento);
+				desagendamentoParcelas.setDataCredito(dataCredito);
+				desagendamentoParcelas.setNovoValorParcela(novoValorParcela);
+				desagendamentoParcelas.setValorOriginalParcela(valorOriginalParcela);
+				desagendamentoParcelas.setValorAjuste(valorAjuste);
+				desagendamentoParcelas.setDataCancelamento(dataCancelamento);
+				desagendamentoParcelas.setValorRVOriginal(valorRVOriginal);
+				desagendamentoParcelas.setValorCancelamentoSolicitado(valorCancelamentoSolicitado);
+				desagendamentoParcelas.setNumeroCartao(numeroCartao);
+				desagendamentoParcelas.setDataTransacao(dataTransacao);
+				desagendamentoParcelas.setNsu(nsu);
+				desagendamentoParcelas.setTipoDebito(tipoDebito);
+				desagendamentoParcelas.setNumeroParcela(numeroParcela);
+				desagendamentoParcelas.setBandeiraRVOrigem(bandeiraRVOrigem);
+				
+				System.out.println(desagendamentoParcelas.toString());
+				
+				}
+			
+			if(tipo.equals("050")) {
+				System.out.println("Totalizador Matriz");
+				
+				String numeroMatriz = linha.substring(3, 12);
+				String quantidadeResumosMatriz = linha.substring(12, 18);
+				String valorTotalCreditosNormais = linha.substring(18, 33);
+				String quantidadeCreditosAntecipados = linha.substring(	33, 39);
+				String valorTotalAntecipados = linha.substring(39, 54);
+				String quantidadeAjusteCredito = linha.substring(54, 58);
+				String valorTotalAjusteCredito = linha.substring( 58, 73);
+				String quantidadeAjusteDebito = linha.substring(73, 79);
+				String valorTotalAjusteDebito = linha.substring(79, 94);
+				
+				//************** instanciando obj Totalizador da Matriz *******************
+				
+				TotalizadorMatriz totalizadorMatriz = new TotalizadorMatriz();
+				
+				totalizadorMatriz.setTpRegistro(tipo);;
+				totalizadorMatriz.setNumeroMatriz(numeroMatriz);
+				totalizadorMatriz.setQuantidadeResumosMatriz(quantidadeResumosMatriz);
+				totalizadorMatriz.setValorTotalCreditosNormais(valorTotalCreditosNormais);
+				totalizadorMatriz.setQuantidadeCreditosAntecipados(quantidadeCreditosAntecipados);
+				totalizadorMatriz.setValorTotalAntecipados(valorTotalAntecipados);
+				totalizadorMatriz.setQuantidadeAjusteCredito(quantidadeAjusteCredito);
+				totalizadorMatriz.setValorTotalAjusteCredito(valorTotalAjusteCredito);
+				totalizadorMatriz.setQuantidadeAjusteDebito(quantidadeAjusteDebito);
+				totalizadorMatriz.setValorTotalAjusteDebito(valorTotalAjusteDebito);
+		
+				System.out.println(totalizadorMatriz.toString());
+				
+				}
+			
 			
 		}
 		fr.close();
@@ -513,5 +754,262 @@ public class LerArquivo {
 		return status;
 	}
 	
+	public String retornaAjuste(int ajuste) {
+		String status = "";
+		switch(ajuste) {
+		case 1:
+			status = "FRANQ. INTERLIGAÇÃO";
+			break;
+		case 2:
+			status = "CONSULTA DE CHEQUES";
+			break;
+		case 3:
+			status = "DÉBITOS PARCELADOS";
+			break;
+		case 4:
+			status = "DÉBITO TX TRIBUTO";
+			break;
+		case 5:
+			status = "TX MAN DO TEF";
+			break;
+		case 6:
+			status = "POS-INATIV/CONEC/PIN";
+			break;
+		case 7:
+			status = "CREDENC/ADESAO";
+			break;
+		case 8:
+			status = "REPOS/ADIC MAQUINETA";
+			break;
+		case 9:
+			status = "CANCEL/CHBK MAESTRO";
+			break;
+		case 10:
+			status = "ADESÃO SECURECODE";
+			break;
+		case 11:
+			status = "MENS.SECURECODE";
+			break;
+		case 13:
+			status = "CONS.SECURECODE";
+			break;
+		case 14:
+			status = "TARIFA DÉBITO";
+			break;
+		case 15:
+			status = "CBK CARTÃO CHIP";
+			break;
+		case 16:
+			status = "ESTORNO CR.INDEV.CI";
+			break;
+		case 17:
+			status = "INDENIZA PÓS PERDIDO";
+			break;
+		case 18:
+			status = "CANCEL DE VENDAS";
+			break;
+		case 19:
+			status = "SEGUNDA VIA EXTRATO";
+			break;
+		case 20:
+			status = "POS-INATIV/CONEC/PIN";
+			break;
+		case 21:
+			status = "CANCELAMENTO MAESTRO";
+			break;
+		case 22:
+			status = "CONTESTAÇAO DE VENDA";
+			break;
+		case 23:
+			status = "CONTESTAÇAO DE VENDA";
+			break;
+		case 24:
+			status = "TRF AD EXCESSO CBACK";
+			break;
+		case 28:
+			status = "AL.POS/PINPAD/TX CONECT";
+			break;
+		case 29:
+			status = "DÉBITO RECARGA";
+			break;
+		case 30:
+			status = "CANCEL DESP DOLAR";
+			break;
+		case 34:
+			status = "MODELO TARIFARIO";
+			break;
+		case 35:
+			status = "CONSULTA AVS";
+			break;
+		case 36:
+			status = "DEVOLUCAO CV";
+			break;
+		case 37:
+			status = "ESTORNO CR.INDEV.";
+			break;
+		case 38:
+			status = "ESTORNO TX ADMIN";
+			break;
+		case 39:
+			status = "ESTORNO REBATE";
+			break;
+		case 40:
+			status = "TARIFA EXT.MENSAL";
+			break;
+		case 46:
+			status = "TAXA PARC. ESPECIAL";
+			break;
+		case 48:
+			status = "AL.POS/PINPAD/TX CONECT";
+			break;
+		case 49:
+			status = "POS-INATIV/CONEC/PIN";
+			break;
+		case 51:
+			status = "CRED SECURECODE";
+			break;
+		case 52:
+			status = "REVERSÃO DEBITO CBK";
+			break;
+		case 53:
+			status = "CREDITO RECARGA";
+			break;
+		case 54:
+			status = "TOT.LIQID.A MENOR";
+			break;
+		case 55:
+			status = "CRED SECURECODE";
+			break;
+		case 56:
+			status = "PREMIO PROMOCAO PARCELADO";
+			break;
+		case 57:
+			status = "PGTO DESAGIO";
+			break;
+		case 58:
+			status = "CREDITO ALUGUEL";
+			break;
+		case 59:
+			status = "REBATE MENSAL";
+			break;
+		case 60:
+			status = "CRED SECURECODE";
+			break;
+		case 61:
+			status = "DEV CRED PGTO MAIOR";
+			break;
+		case 62:
+			status = "REGULARIZAÇÃO DIF. TAXA";
+			break;
+		case 63:
+			status = "REGUL.DB ANTERIOR";
+			break;
+		case 64:
+			status = "PGTO DE RV";
+			break;	
+		case 65:
+			status = "COMPL.CR EFET.MENOR";
+			break;	
+		case 66:
+			status = "PGT.JURO CORRECAO";
+			break;	
+		case 67:
+			status = "PGT.CV ADULTERADO";
+			break;	
+		case 68:
+			status = "PGT.CV U$$-P.TUR";
+			break;	
+		case 69:
+			status = "PGTO VIACAO AEREA";
+			break;	
+		case 70:
+			status = "PGT.P/TRANSF.TIT.";
+			break;	
+		case 71:
+			status = "PGT.N.S/J-1A PARC";
+			break;	
+		case 72:
+			status = "PGT.N.S/J-2A PARC";
+			break;	
+		case 73:
+			status = "PGT.N.S/J-3A PARC";
+			break;	
+		case 74:
+			status = "PGT.N.S/J-4A PARC";
+			break;	
+		case 75:
+			status = "PGT.N.S/J-5A PARC";
+			break;	
+		case 76:
+			status = "PGT.N.S/J-6A PARC";
+			break;	
+		case 77:
+			status = "PGT.N.S/J-7A PARC";
+			break;	
+		case 78:
+			status = "PGT.N.S/J-8A PARC";
+			break;	
+		case 79:
+			status = "PGT.N.S/J-9A PARC";
+			break;	
+		case 80:
+			status = "CAPTURA CV OFF-TO";
+			break;	
+		case 81:
+			status = "PCTE TUR.CREDITO";
+			break;	
+		case 82:
+			status = "COMISS.SOBRE VENDA";
+			break;	
+		case 83:
+			status = "IR S/COMISSAO";
+			break;	
+		case 84:
+			status = "ADIC.IR ESTAD";
+			break;	
+		case 85:
+			status = "PGTO DE RV";
+			break;	
+		case 86:
+			status = "ANTECIPACAO DOLAR";
+			break;	
+		case 87:
+			status = "DEVOL.CANCEL.DOLAR";
+			break;	
+		case 88:
+			status = "TIER PRICING";
+			break;
+		case 89:
+			status = "EST CONS.SERASA/AVS";
+			break;
+		case 90:
+			status = "ESTOR.TARIFA ENV.DOC";
+			break;
+		case 91:
+			status = "ESTORNO POS PERDIDO";
+			break;
+		case 92:
+			status = "ESTOR.TARIFA ENV.DOC";
+			break;
+		case 93:
+			status = "EST.EXT SALDOS ABER";
+			break;
+		case 94:
+			status = "ESTOR.TAXA DE ADESÃO";
+			break;
+		case 95:
+			status = "EST AL.POS/TX.CONET";
+			break;
+		case 96:
+			status = "ESTOR.TAR 2°VIA EXT";
+			break;
+		case 99:
+			status = "DEBITO NÃO ACATADO";
+			break;
+			
+		}
+		
+		return status;
+	}
 	
 }

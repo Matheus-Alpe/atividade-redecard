@@ -1,15 +1,17 @@
 package br.com.redecard.classes;
 
 public class DebitosPendentes {
+	
 	private String tpRgistro;
 	private String pvAjustado;
 	private String ordemDebito;
+	private String dataOrdemDebito;
 	private String valorAjuste;
 	private String idMotivoAjuste;
 	private String motivoAjuste;
 	private String numCartao;
 	private String nsu;
-	private String cvNsu;
+	private String dataCvNsu;
 	private String numeroAutorizacao;
 	private String valorTransacaoOriginal;
 	private String numeroRVOriginal;
@@ -21,7 +23,6 @@ public class DebitosPendentes {
 	private String numeroProcesso;
 	private String mesReferencia;
 	private String valorPago;
-	private String dataPago;
 	private String dataCompensacao;
 	private String valorPendente;
 	private String processoRetencao;
@@ -44,6 +45,12 @@ public class DebitosPendentes {
 	}
 	public void setOrdemDebito(String ordemDebito) {
 		this.ordemDebito = ordemDebito;
+	}
+	public String getDataOrdemDebito() {
+		return dataOrdemDebito;
+	}
+	public void setDataOrdemDebito(String dataOrdemDebito) {
+		this.dataOrdemDebito = dataOrdemDebito;
 	}
 	public String getValorAjuste() {
 		return valorAjuste;
@@ -75,11 +82,11 @@ public class DebitosPendentes {
 	public void setNsu(String nsu) {
 		this.nsu = nsu;
 	}
-	public String getCvNsu() {
-		return cvNsu;
+	public String getDataCvNsu() {
+		return dataCvNsu;
 	}
-	public void setCvNsu(String cvNsu) {
-		this.cvNsu = cvNsu;
+	public void setDataCvNsu(String cvNsu) {
+		this.dataCvNsu = cvNsu;
 	}
 	public String getNumeroAutorizacao() {
 		return numeroAutorizacao;
@@ -147,12 +154,7 @@ public class DebitosPendentes {
 	public void setValorPago(String valorPago) {
 		this.valorPago = valorPago;
 	}
-	public String getDataPago() {
-		return dataPago;
-	}
-	public void setDataPago(String dataPago) {
-		this.dataPago = dataPago;
-	}
+
 	public String getDataCompensacao() {
 		return dataCompensacao;
 	}
@@ -186,16 +188,17 @@ public class DebitosPendentes {
 	@Override
 	public String toString() {
 		return "DebitosPendentes [tpRgistro=" + tpRgistro + ", pvAjustado=" + pvAjustado + ", ordemDebito="
-				+ ordemDebito + ", valorAjuste=" + valorAjuste + ", idMotivoAjuste=" + idMotivoAjuste
-				+ ", motivoAjuste=" + motivoAjuste + ", numCartao=" + numCartao + ", nsu=" + nsu + ", cvNsu=" + cvNsu
-				+ ", numeroAutorizacao=" + numeroAutorizacao + ", valorTransacaoOriginal=" + valorTransacaoOriginal
-				+ ", numeroRVOriginal=" + numeroRVOriginal + ", dataRVOriginal=" + dataRVOriginal
-				+ ", numeroPVOriginal=" + numeroPVOriginal + ", numeroCarta=" + numeroCarta + ", numeroCartaReferencia="
-				+ numeroCartaReferencia + ", dataCartaCancelamento=" + dataCartaCancelamento + ", numeroProcesso="
-				+ numeroProcesso + ", mesReferencia=" + mesReferencia + ", valorPago=" + valorPago + ", dataPago="
-				+ dataPago + ", dataCompensacao=" + dataCompensacao + ", valorPendente=" + valorPendente
-				+ ", processoRetencao=" + processoRetencao + ", meioCompensado=" + meioCompensado
+				+ ordemDebito + ", dataOrdemDebito=" + dataOrdemDebito + ", valorAjuste=" + valorAjuste
+				+ ", idMotivoAjuste=" + idMotivoAjuste + ", motivoAjuste=" + motivoAjuste + ", numCartao=" + numCartao
+				+ ", nsu=" + nsu + ", dataCvNsu=" + dataCvNsu + ", numeroAutorizacao=" + numeroAutorizacao
+				+ ", valorTransacaoOriginal=" + valorTransacaoOriginal + ", numeroRVOriginal=" + numeroRVOriginal
+				+ ", dataRVOriginal=" + dataRVOriginal + ", numeroPVOriginal=" + numeroPVOriginal + ", numeroCarta="
+				+ numeroCarta + ", numeroCartaReferencia=" + numeroCartaReferencia + ", dataCartaCancelamento="
+				+ dataCartaCancelamento + ", numeroProcesso=" + numeroProcesso + ", mesReferencia=" + mesReferencia
+				+ ", valorPago=" + valorPago + ", dataCompensacao=" + dataCompensacao + ", valorPendente="
+				+ valorPendente + ", processoRetencao=" + processoRetencao + ", meioCompensado=" + meioCompensado
 				+ ", descricaoMeioCompensado=" + descricaoMeioCompensado + "]";
 	}
+
 	
 }
